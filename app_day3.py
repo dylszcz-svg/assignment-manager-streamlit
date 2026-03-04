@@ -70,6 +70,11 @@ with tab1:
                         st.markdown(f"Type: **{assignment['type']}** ")
                         break
 
+            selected_assignment = st.selectbox("Assignment Title",
+                                          options = assignments,
+                                          format_func = lambda x: f"{x['title']} ({x['type']})",
+                                          key = "new_assignment")
+
 
         
 with tab2:
@@ -146,8 +151,17 @@ with tab3:
             selected_assignment = assignment
             break
     
-    edit_title = st.text_input('Title', value = selected_assignment['title'], key = 'edit_title')
-    edit_description = st.text_area('Description', value = selected_assignment['description'], key = 'edit_description')
+    edit_title = st.text_input('Title', value = selected_assignment['title'],
+                               key = f"edit_title, {selected_assignment['id']}")
+    edit_description = st.text_area('Description', value = selected_assignment['description'],
+                                    key = f"edit_description, {selected_assignment['id']}")
+
+
+    type_list = ['Homework','Lab']
+    selected_assignment_type_index = type_list.index(selected_assignment['type'])
+    edit_type = st.radio("Type", type_list, index = selected_assignment_type_index,
+                         key = f"edit_type, {selected_assignment['id']}")
+
 
     update_btn = st.button('Update Assignment', key = 'btn_update', use_container_width= True, type = 'primary')
     if update_btn:
@@ -161,4 +175,4 @@ with tab3:
 
             st.success("Assignment is Updated!")
             st.rerun
-            st.dataframe(assignments)
+            #st.dataframe(assignments)
