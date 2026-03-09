@@ -1,0 +1,16 @@
+[
+    {
+        "id": "1",
+        "email": "admin@school.edu",
+        "full_name": "System Admin",
+        "password": "123ssag@43AE",
+        "role": "Admin",
+        "registered_at": "..."
+    },
+    {
+        "id": "b48ba652-7298-44da-8824-2d94b90970ca",
+        "email": "dylszcz@udel.edu",
+        "password": "123456",
+        "role": "Instructor"
+    }
+]
